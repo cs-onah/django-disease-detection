@@ -35,9 +35,8 @@ def image_upload(request):
         # Assuming your form has an input field named 'image'
         uploaded_image = request.FILES.get('image')
         if uploaded_image:
-
             prepare_func, process_func =  mobilenetV2_prepare_image, tf.keras.applications.mobilenet_v2.preprocess_input
-            model_path = "/Users/macbook/Downloads/MobilenetV2.h5"
+            model_path = "myapp/model/MobilenetV2.h5"
             model = os.path.join(model_path)
             classes_dict = {0: 'Mosaic_N', 1: 'blight_N', 2: 'brownstreak_N', 3: 'greenmite_N'}
             model = keras.models.load_model(model, compile=False)
