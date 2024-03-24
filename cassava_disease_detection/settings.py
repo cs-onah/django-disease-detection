@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-br!!h!s0co#5oj2%ro92qv2#%p1jh8s-p^p4-7)i4c=7zs*w41
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ebuka.pythonanywhere.com']
+ALLOWED_HOSTS = ['ebuka.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
