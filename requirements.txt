@@ -1,4 +1,4 @@
-https://github.com/alessandro893/tensorflow-macos-noavx/releases/download/v2.12.0/tensorflow-2.12.0-cp310-cp310-macosx_12_0_x86_64.whl
+tensorflow==1.15
 Django
 image
 numpy
