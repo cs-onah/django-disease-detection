@@ -61,3 +61,6 @@ def image_upload(request):
             return JsonResponse({'error': 'No image uploaded.'}, status=400)
     else:
         return JsonResponse({'error': 'Only POST requests are allowed.'}, status=405)
+
+def health_check(request):
+    return JsonResponse({'status': 'ok'})
