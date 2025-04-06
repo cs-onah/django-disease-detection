@@ -25,23 +25,22 @@ def mobilenetV2_prepare_image(file):
   # print(img_array_expanded.shape)
   return tf.keras.applications.mobilenet_v2.preprocess_input(img_array_expanded)
   
-  
 def display(classes_dict, probs):
   res = {classes_dict[i]:round(probs[i]*100,2) for i in range(len(probs)) }
   return res
+
+# Load model outside upload function
+prepare_func, process_func =  mobilenetV2_prepare_image, tf.keras.applications.mobilenet_v2.preprocess_input
+model_path = "myapp/model/MobilenetV2.h5"
+model = os.path.join(model_path)
+classes_dict = {0: 'Mosaic_N', 1: 'blight_N', 2: 'brownstreak_N', 3: 'greenmite_N'}
+model = keras.models.load_model(model, compile=False)
 
 def image_upload(request):
     if request.method == 'POST':
         # Assuming your form has an input field named 'image'
         uploaded_image = request.FILES.get('image')
         if uploaded_image:
-            prepare_func, process_func =  mobilenetV2_prepare_image, tf.keras.applications.mobilenet_v2.preprocess_input
-            model_path = "myapp/model/MobilenetV2.h5"
-            model = os.path.join(model_path)
-            classes_dict = {0: 'Mosaic_N', 1: 'blight_N', 2: 'brownstreak_N', 3: 'greenmite_N'}
-            model = keras.models.load_model(model, compile=False)
-
-
             # Open the uploaded image using PIL
             value = Image.open(uploaded_image)
             file = value.convert('RGB')
