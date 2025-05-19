@@ -38,6 +38,7 @@ model = keras.models.load_model(model, compile=False)
 
 def image_upload(request):
     if request.method == 'POST':
+        print("New Request -> Image Upload")
         # Assuming your form has an input field named 'image'
         uploaded_image = request.FILES.get('image')
         if uploaded_image:
@@ -63,4 +64,5 @@ def image_upload(request):
         return JsonResponse({'error': 'Only POST requests are allowed.'}, status=405)
 
 def health_check(request):
+    print("New Request -> Health Check")
     return JsonResponse({'status': 'ok'})
